@@ -14,8 +14,23 @@ set :default_environment, {
 role :app, "rubybnb.devmask.net"
 role :web, "rubybnb.devmask.net"
 
+
 namespace :deploy do
   task :start, :roles => :app, :except => { :no_release => true } do
-    run "cd #{current_path} && bundle exec unicorn -c config/unicorn.rb -E production -D"
+    run "cd #{current_path} && bundle exec unicorn_rails -c config/unicorn.rb -E production -D"
+  end
+
+  task :stop, :roles => :app, :except => { :no_release => true } do
+    run "kill `cat /opt/apps/shared/pids/unicorn.pid`"
+  end
+
+  task :restart, :roles => :app, :except => { :no_release => true } do
+    begin
+      stop
+    rescue
+      puts "An error stoping the process"
+    end
+    run "cp /opt/apps/database.yml /opt/apps/current/config/database.yml"
+    start
   end
 end
