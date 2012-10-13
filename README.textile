@@ -50,7 +50,10 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
 h2. Documentation and Support
 
-This is the only documentation.
+ Development setup
+
+ export OMNIAUTH_PROVIDER_KEY=2b5e2eb79684c6d2c763
+ export OMNIAUTH_PROVIDER_SECRET= 07f703a26431b009ca734dfc4378f363c0a3c846
 
 h4. Issues
 
