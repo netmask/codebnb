@@ -8,7 +8,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'puma'
+gem 'unicorn'
 gem "pg", ">= 0.14.1"
 gem "haml", ">= 3.1.7"
 gem "haml-rails", ">= 0.3.5", :group => :development
