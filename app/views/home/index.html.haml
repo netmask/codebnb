@@ -1,2 +1,18 @@
-%h1 Home#index
-%p Find me in app/views/home/index.html.haml
+.row
+  .span4
+    - 5.times do
+      .well
+        .row
+          .span1
+            %a.thumbnail{:href => "http://critterapp.pagodabox.com/others/admin"}
+              %img{:alt => "", :src => "http://critterapp.pagodabox.com/img/user.jpg"}/
+          .span2
+            %p admin
+            %strong
+              %p First Last Name
+        .row
+          .span3
+            %span.badge.badge-warning 8 messages
+            %span.badge.badge-info 15 followers
+  .span8
+    aaa

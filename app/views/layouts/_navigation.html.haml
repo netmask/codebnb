@@ -1,10 +1,33 @@
-= link_to "Codebnb", root_path, :class => 'brand'
-%ul.nav
-  - if user_signed_in?
-    %li
-      Logged in as #{current_user.name}
-    %li
-      = link_to 'Logout', signout_path
-  - else
-    %li
-      = link_to 'Login', signin_path
+.row
+  .span12
+    = link_to root_path, class: 'pull-right' do
+      = image_tag 'logo.png'
+#main-navbar.navbar.navbar-static
+  .navbar-inner
+    .container{:style => "width: auto;"}
+      %form.navbar-search.pull-left
+        %input.search-query.span2{:placeholder => "Search", :type => "text"}
+        %select.multiple.span2
+          %option 1
+          %option 2
+      %ul.nav.pull-right
+        - unless user_signed_in?
+          %li
+            = link_to signin_path do
+              Login
+        - else
+          %li#fat-menu.dropdown
+            %a#drop3.dropdown-toggle{"data-toggle" => "dropdown", :href => "#", :role => "button"}
+              #{current_user.name}
+              %b.caret
+            %ul.dropdown-menu{"aria-labelledby" => "drop3", :role => "menu"}
+              %li
+                %a{:href => "#", :tabindex => "-1"} My profile
+              %li
+                %a{:href => "#", :tabindex => "-1"} Venues?
+              %li.divider
+              %li
+                = link_to signout_path, tabindex: "-1" do
+                  %i.icon-off
+                  Log out
+
