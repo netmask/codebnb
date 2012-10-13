@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
-  attr_accessible :provider, :uid, :name, :email
+
+  has_many :venues
+
+  attr_accessible :provider, :uid, :name, :email, :first_name, :last_name, :age, :address, :city, :state, :country, :zip_code
 
   def self.create_with_omniauth(auth)
     create! do |user|

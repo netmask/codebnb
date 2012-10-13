@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :venue do
-    user nil
+    user_id 1
     latitude 1.5
     longitude 1.5
     label "MyString"
