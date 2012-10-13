@@ -54,3 +54,4 @@ gem "zurb-foundation", ">= 3.1.1", :group => :assets
 gem "hominid", ">= 3.0.5"
 gem "omniauth", ">= 1.1.1"
 gem "omniauth-github"
+gem "quiet_assets", ">= 1.0.1", :group => :development
