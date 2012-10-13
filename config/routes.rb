@@ -3,5 +3,7 @@ Codebnb::Application.routes.draw do
   match '/signout' => 'sessions#destroy', :as => :signout
   match '/signin' => 'sessions#new', :as => :signin
 
+  match '/auth/:provider/callback', to: 'sessions#create'
+
 
 end

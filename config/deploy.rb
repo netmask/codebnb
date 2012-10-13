@@ -13,11 +13,11 @@ set :default_environment, {
 
 role :app, "rubybnb.devmask.net"
 role :web, "rubybnb.devmask.net"
-
+role :db, "rubybnb.devmask.net", :primary => true
 
 namespace :deploy do
   task :start, :roles => :app, :except => { :no_release => true } do
-    run "cd #{current_path} && bundle exec unicorn_rails -c config/unicorn.rb -E production -D"
+    run "source /opt/apps/github && cd #{current_path} && bundle exec unicorn_rails -c config/unicorn.rb -E production -D"
   end
 
   task :stop, :roles => :app, :except => { :no_release => true } do
@@ -31,6 +31,7 @@ namespace :deploy do
       puts "An error stoping the process"
     end
     run "cp /opt/apps/database.yml /opt/apps/current/config/database.yml"
+    migrate
     start
   end
 end
