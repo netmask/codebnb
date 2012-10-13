@@ -1,12 +1,14 @@
 source 'https://rubygems.org'
 gem 'rails', '3.2.8'
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
 end
+
 gem 'jquery-rails'
-gem 'thin'
+gem 'puma'
 gem "pg", ">= 0.14.1"
 gem "haml", ">= 3.1.7"
 gem "haml-rails", ">= 0.3.5", :group => :development
@@ -25,3 +27,4 @@ gem "hominid", ">= 3.0.5"
 gem "omniauth", ">= 1.1.1"
 gem "omniauth-github"
 gem "quiet_assets", ">= 1.0.1", :group => :development
+gem "capistrano", :group => :development
