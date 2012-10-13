@@ -21,8 +21,6 @@ gem "database_cleaner", ">= 0.9.1", :group => :test
 gem "launchy", ">= 2.1.2", :group => :test
 gem "capybara", ">= 1.1.2", :group => :test
 gem "factory_girl_rails", ">= 4.1.0", :group => [:development, :test]
-gem "compass-rails", ">= 1.0.3", :group => :assets
-gem "zurb-foundation", ">= 3.1.1", :group => :assets
 gem "hominid", ">= 3.0.5"
 gem "omniauth", ">= 1.1.1"
 gem "omniauth-github"
