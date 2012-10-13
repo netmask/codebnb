@@ -26,5 +26,5 @@ Feature: The user can manage his venues
     | Disclamer      | Nose puede no poder |
     | Mates allowed  |                   1 |
     | Mates quantity |                  10 |
-    And I press "Save Venue"
+    And I press "Create Venue"
     Then I should see "Venue Created!"
