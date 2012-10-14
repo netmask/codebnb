@@ -1,7 +1,7 @@
 %tr
   %td.span2= venue.label
   %td.span3
-    = link_to 'Edit', '', class: 'btn btn-info'
+    = link_to 'Edit', edit_profile_venue_path(venue.id), remote: true, class: 'btn btn-info'
     = link_to '', class: 'btn btn-danger' do
       %i.icon-trash.icon-white
       Delete

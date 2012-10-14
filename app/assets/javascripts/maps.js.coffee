@@ -3,6 +3,9 @@
 class Codebnb.google_maps
 
   constructor: ->
+    console.log 'io io'
+
+  initMap: ()->
     @mapOptions =
       zoom: 15
       mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -51,7 +54,7 @@ class Codebnb.google_maps
 
 
 
-  @handleNoGeolocation: (errorFlag) ->
+  handleNoGeolocation: (errorFlag) ->
     if errorFlag
       content = "Error: The Geolocation service failed."
     else
@@ -63,6 +66,25 @@ class Codebnb.google_maps
 
     infowindow = new google.maps.InfoWindow(options)
     map.setCenter @options.position
+
+  loadMap: (lat, lng) ->
+    @mapOptions =
+      zoom: 15
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+
+    map = new google.maps.Map(document.getElementById('venues_map'), @mapOptions)
+
+    pos = new google.maps.LatLng(lat, lng)
+    @infowindow = new google.maps.Marker(
+      animation: 'bounce'
+      map: map
+      position: pos
+      title: "You are here!"
+      clickable: true
+    )
+    map.setCenter pos
+
+
 
 # map = undefined
 # google.maps.event.addDomListener window, "load", initialize
