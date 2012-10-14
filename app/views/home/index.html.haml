@@ -1,4 +1,4 @@
-.row
+#home.row
   .span4
     - 5.times do
       .well
@@ -15,4 +15,9 @@
             %span.badge.badge-warning 8 messages
             %span.badge.badge-info 15 followers
   .span8
-    aaa
+    #venues_map
+
+:javascript
+  $(function() {
+    window.google_maps = new Codebnb.google_maps;
+  });

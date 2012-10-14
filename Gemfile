@@ -5,6 +5,7 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
+  gem 'coffee-filter'
 end
 
 group :development do
@@ -40,3 +41,4 @@ gem "hominid", ">= 3.0.5"
 gem "omniauth", ">= 1.1.1"
 gem "omniauth-github"
 gem 'geocoder'
+gem 'gmaps4rails'
