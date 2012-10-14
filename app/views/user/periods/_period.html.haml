@@ -1,0 +1,8 @@
+%tr
+  %td= period.id
+  %td= period.start
+  %td= period.ends
+  %td
+    = link_to profile_venue_period_path(@venue.id, period.id), class: 'btn btn-danger',
+      method: 'delete', confirm: 'Qre you sure?' do
+      %i.icon-trash.icon-white

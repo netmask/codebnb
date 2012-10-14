@@ -1,0 +1,63 @@
+%h3.lead.section-titles Select an Availabitly period of time for your venue
+.well
+  #alert.alert.alert-error{:style => "display: none; "}
+    %strong
+  %table.table
+    %thead
+      %tr
+        %th
+          Start date
+          %a#dp4.btn.small{"data-date" => "#{Date.today}", "data-date-format" => "yyyy-mm-dd", :href => "#"} Change
+        %th
+          End date
+          %a#dp5.btn.small{"data-date" => "#{Date.today}", "data-date-format" => "yyyy-mm-dd", :href => "#"} Change
+    %tbody
+      %tr
+        %td#startDate
+        %td#endDate
+
+= form_for [:profile, :venue, @period], class: 'form-horizontal' do |f|
+  = f.hidden_field :start
+  = f.hidden_field :ends
+  .control-group
+    / Form Actions
+    .form-actions
+      %button.btn.btn-primary.pull-right{:type => "submit"} Save changes
+
+%table.table.table-striped
+  %thead
+    %thead
+      %tr
+        %th id
+        %th start time
+        %th Ends time
+        %th
+
+    %tbody
+      = render @periods
+
+
+
+:coffeescript
+  startDate = new Date()
+  endDate = new Date()
+  $("#dp4").datepicker().on "changeDate", (ev) ->
+    if ev.date.valueOf() > endDate.valueOf()
+      $("#alert").show().find("strong").text "The start date can not be greater then the end date"
+    else
+      $("#alert").hide()
+      startDate = new Date(ev.date)
+      $("#startDate").text $("#dp4").data("date")
+      $('#period_start').val $("#dp4").data("date")
+    $("#dp4").datepicker "hide"
+
+  $("#dp5").datepicker().on "changeDate", (ev) ->
+    if ev.date.valueOf() < startDate.valueOf()
+      $("#alert").show().find("strong").text "The end date can not be less then the start date"
+    else
+      $("#alert").hide()
+      endDate = new Date(ev.date)
+      $("#endDate").text $("#dp5").data("date")
+      $('#period_ends').val $("#dp5").data("date")
+    $("#dp5").datepicker "hide"
+
