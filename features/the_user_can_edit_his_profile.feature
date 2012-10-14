@@ -7,13 +7,11 @@ Feature: The user can edit his profile
     And I follow "Edit"
     Then I fill the "user" form with:
     | Name       | Jon             |
-    | First name | Jon             |
-    | Last name  | Doe             |
     | Age        | 30              |
     | Address    | 1697 Dolores St |
     | City       | San Fransisco   |
     | State      | California      |
     | Country    | United States   |
     | Zip code   | 94110           |
-    And I press "Save User"
+    And I press "Save changes"
     Then I should see "Success!"

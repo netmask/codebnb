@@ -8,7 +8,14 @@ Codebnb::Application.routes.draw do
   match '/auth/:provider/callback', to: 'sessions#create'
 
   resource :profile, module: :user do
-    resource :venues
+    resources :venues do
+      resource :periods
+    end
+
+    resource :requests do
+      match 'accept/:reservation' => 'user/requests#accept', :via => :post, :as => :accept
+      match 'decline/:reservation' => 'user/requests#decline', :via => :post, :as => :decline
+    end
   end
 
   resources :venue do

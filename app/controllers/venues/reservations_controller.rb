@@ -5,7 +5,7 @@ class Venues::ReservationsController < ApplicationController
   end
 
   def create
-    if @reservation = period.reservations.create(status: 'requested', user: current_user) #todo THIS IS A SCOPE!
+    if @reservation = period.reservations.create(status: 'applyed', user: current_user) #todo THIS IS A SCOPE!
       flash[:succes] = 'Reservation applyed, '
     else
       flash[:error] = 'You cant apply for this venue #{@reservation.errors}'
@@ -16,7 +16,7 @@ class Venues::ReservationsController < ApplicationController
   end
 
   def show
-    @reservations  = period.reservations
+    @periods = venue.periods
   end
 
 
