@@ -1,20 +1,56 @@
-= form_for :user, url: profile_path, :method => :put do |f|
-  = f.label :name
-  = f.text_field :name
-  = f.label :first_name
-  = f.text_field :first_name
-  = f.label :last_name
-  = f.text_field :last_name
-  = f.label :age
-  = f.text_field :age
-  = f.label :address
-  = f.text_field :address
-  = f.label :city
-  = f.text_field :city
-  = f.label :state
-  = f.text_field :state
-  = f.label :country
-  = f.text_field :country
-  = f.label :zip_code
-  = f.text_field :zip_code
-  = f.submit
+.row
+  .span4
+    %ul.thumbnails
+      %li.span3
+        %a.thumbnail{:href => "#"}
+          = image_tag(gravatar_image(current_user.email, 210))
+  .span8
+    = form_for :user, url: profile_path, :method => :put, class: 'form-horizontal' do |f|
+      %fieldset
+        #legend
+          %legend Basic Info
+        .control-group
+          / Text input
+          = f.label :name, class: 'control-label'
+          .controls
+            = f.text_field :name, class: 'input-xlarge'
+        .control-group
+          / Text input
+          = f.label :first_name, class: 'control-label'
+          .controls
+            = f.text_field :last_name, class: 'input-xlarge'
+        .control-group
+          / Text input
+          = f.label :age, class: 'control-label'
+          .controls
+            = f.text_field :age, class: 'input-xlarge'
+        .control-group
+          / Text input
+          = f.label :address, class: 'control-label'
+          .controls
+            = f.text_field :address, class: 'input-xlarge'
+        .control-group
+          / Text input
+          = f.label :city, class: 'control-label'
+          .controls
+            = f.text_field :city, class: 'input-xlarge'
+        .control-group
+          / Text input
+          = f.label :state, class: 'control-label'
+          .controls
+            = f.text_field :state, class: 'input-xlarge'
+        .control-group
+          / Text input
+          = f.label :country, class: 'control-label'
+          .controls
+            = f.text_field :country, class: 'input-xlarge'
+        .control-group
+          / Text input
+          = f.label :zip_code, class: 'control-label'
+          .controls
+            = f.text_field :zip_code, class: 'input-xlarge'
+        .control-group
+          / Form Actions
+          .form-actions
+            %button.btn.btn-primary.pull-right{:type => "submit"} Save changes
+

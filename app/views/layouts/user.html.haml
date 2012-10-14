@@ -1,0 +1,22 @@
+!!!
+%html
+  %head
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
+      %title= content_for?(:title) ? yield(:title) : "Codebnb"
+      %meta{:content => "initial-scale=1.0, user-scalable=no", :name => "viewport"}
+      %meta{:content => content_for?(:description) ? yield(:description) : "Codebnb", :name => "description"}
+        = stylesheet_link_tag "application", :media => "all"
+        %script{:src => "http://maps.googleapis.com/maps/api/js?key=AIzaSyA-nKa9DJ8FPOI6fTLvTyoKS7wDW3VdxlU&sensor=true", :type => "text/javascript"}
+        = javascript_include_tag "application"
+        = csrf_meta_tags
+        = yield(:head)
+  %body
+    #container.container
+      %header
+        = render 'layouts/user_navigation'
+        = render 'layouts/messages'
+      #main{:role => "main"}
+        = yield
+      %footer
+    / ! end of #container
+
