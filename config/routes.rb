@@ -1,5 +1,6 @@
 Codebnb::Application.routes.draw do
 
+
   root :to => "home#index"
 
   match '/signout' => 'sessions#destroy', :as => :signout
@@ -10,5 +11,8 @@ Codebnb::Application.routes.draw do
     resource :venues
   end
 
+  resources :venue do
+    resource :reservation, module: :venues
+  end
 
 end

@@ -1,0 +1,2 @@
+module Venues::BookingHelper
+end
