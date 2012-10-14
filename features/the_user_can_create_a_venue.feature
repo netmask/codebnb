@@ -17,8 +17,6 @@ Feature: The user can manage his venues
     Given I follow "Create Venue"
     And I fill the "venue" form with:
     | Label          |       San Fransisco |
-    | Latitude       |             33.2211 |
-    | Longitude      |            108.0211 |
     | Description    |     Pride del bueno |
     | Work place     |                   1 |
     | Meals          |                   1 |

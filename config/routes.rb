@@ -19,7 +19,7 @@ Codebnb::Application.routes.draw do
   end
 
   resources :venues do
-    resource :reservation, module: :venues
+    resources :reservations, module: :venues
   end
 
 end

@@ -3,4 +3,5 @@ class Period < ActiveRecord::Base
   has_many :reservations
 
   attr_accessible :ends, :start
+
 end

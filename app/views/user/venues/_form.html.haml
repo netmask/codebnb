@@ -31,7 +31,7 @@
       / Text input
       = f.label :description, class: 'control-label'
       .controls
-        = text_area :description, nil,class: 'input-large', rows: '3'
+        = f.text_area :description, class: 'input-large', rows: '3'
     .control-group
       / Text input
       = f.label :rooms, class: 'control-label'
@@ -64,6 +64,3 @@
       / Form Actions
       .form-actions
         %button.btn.btn-primary.pull-right{:type => "submit"} Save changes
-
-
-

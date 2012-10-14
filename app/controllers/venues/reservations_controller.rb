@@ -1,15 +1,12 @@
 class Venues::ReservationsController < ApplicationController
+  respond_to :html, :json
 
-  def new
-    @period = venue.periods.reservations.build
+  def index
+    @periods = venue.periods
   end
 
   def create
-    if @reservation = period.reservations.create(status: 'applyed', user: current_user) #todo THIS IS A SCOPE!
-      flash[:succes] = 'Reservation applyed, '
-    else
-      flash[:error] = 'You cant apply for this venue #{@reservation.errors}'
-    end
+    respond_with(@reservation = period.reservations.create(status: :applyed, user: current_user))
   end
 
   def destroy
