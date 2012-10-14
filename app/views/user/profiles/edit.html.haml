@@ -5,7 +5,7 @@
         %a.thumbnail{:href => "#"}
           = image_tag(gravatar_image(current_user.email, 210))
   .span8
-    = form_for :user, url: profile_path, :method => :put, class: 'form-horizontal' do |f|
+    = form_for @user, url: profile_path, :method => :put, class: 'form-horizontal' do |f|
       %fieldset
         #legend
           %legend Basic Info
@@ -14,11 +14,6 @@
           = f.label :name, class: 'control-label'
           .controls
             = f.text_field :name, class: 'input-xlarge'
-        .control-group
-          / Text input
-          = f.label :first_name, class: 'control-label'
-          .controls
-            = f.text_field :last_name, class: 'input-xlarge'
         .control-group
           / Text input
           = f.label :age, class: 'control-label'

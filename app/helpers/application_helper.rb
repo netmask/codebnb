@@ -5,4 +5,9 @@ module ApplicationHelper
     "https://secure.gravatar.com/avatar/#{hash}?s=#{size}"
   end
 
+  def select_tab(tab)
+    if controller_name == tab
+      'active'
+    end
+  end
 end

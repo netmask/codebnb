@@ -1,6 +1,6 @@
 class User::ProfilesController < UserController
 
-  def show
+  def edit
     @user = current_user
   end
 

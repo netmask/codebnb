@@ -6,12 +6,12 @@
   .navbar-inner
     .container{:style => "width: auto;"}
       %ul.nav
-        %li.active
-          = link_to 'My profile'
-        %li
-          = link_to 'My Venues'
-        %li
-          = link_to 'Venues'
+        %li{class: "#{select_tab 'profiles'}"}
+          = link_to 'My profile', edit_profile_path
+        %li{class: "#{select_tab 'venues'}"}
+          = link_to 'My Venues', profile_venues_path
+        %li{class: "#{select_tab 'request'}"}
+          = link_to 'Requests'
       %ul.nav.pull-right
         - unless user_signed_in?
           %li
