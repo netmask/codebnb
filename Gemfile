@@ -39,3 +39,4 @@ gem "haml", ">= 3.1.7"
 gem "hominid", ">= 3.0.5"
 gem "omniauth", ">= 1.1.1"
 gem "omniauth-github"
+gem 'geocoder'
