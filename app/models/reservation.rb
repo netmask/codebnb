@@ -5,13 +5,13 @@ class Reservation < ActiveRecord::Base
 
   attr_accessible :status
 
-  def self.requests(venue_id, user_id)
+  def self.requests(user_id)
     joins(:period => :venue)
-      .where(:venues => {user_id: user_id, id: venue_id})
+      .where(:venues => {user_id: user_id})
       .where(:status => :applyed)
   end
 
   def self.request(venue_id, hoster_id, user_id)
-    requests(venue_id, hoster_id).where(user_id: user_id)
+    requests(hoster_id).where(user_id: user_id)
   end
 end
