@@ -11,7 +11,7 @@
         %li{class: "#{select_tab 'venues'}"}
           = link_to 'My Venues', profile_venues_path
         %li{class: "#{select_tab 'request'}"}
-          = link_to 'Requests'
+          = link_to 'Requests', profile_requests_path
       %ul.nav.pull-right
         - unless user_signed_in?
           %li
