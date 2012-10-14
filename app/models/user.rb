@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 
   has_many :venues
-
+  has_many :reservations
   attr_accessible :provider, :uid, :name, :email, :first_name, :last_name, :age, :address, :city, :state, :country, :zip_code
 
   def self.create_with_omniauth(auth)
