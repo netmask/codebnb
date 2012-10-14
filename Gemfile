@@ -42,3 +42,4 @@ gem "omniauth-github"
 gem 'geocoder'
 gem 'gmaps4rails'
 gem 'coffee-filter'
+gem 'carrierwave'

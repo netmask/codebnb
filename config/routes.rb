@@ -9,7 +9,7 @@ Codebnb::Application.routes.draw do
 
   resource :profile, module: :user do
     resources :venues do
-      resource :periods
+      resources :periods
     end
 
     resource :requests do
