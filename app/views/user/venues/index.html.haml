@@ -1,2 +1,23 @@
-= link_to 'Create Venue', new_profile_venue_path
-= render @venues
+.row
+  .span5
+    %h3.lead.section-titles
+      My Venues
+      = link_to 'Create Venue', new_profile_venue_path, remote: true, class: 'pull-right'
+
+    %table.table.table-striped
+      %thead
+        %thead
+          %tr
+            %th Venue
+            %th Options
+        %tbody
+          = render @venues
+
+  #venue-form.span7
+:coffeescript
+  $ ->
+    window.venue_profile = new Codebnb.venue_profile
+
+
+
+
