@@ -3,7 +3,6 @@
 class Codebnb.google_maps
 
   constructor: ->
-    console.log 'io io'
 
   initMap: ()->
     @mapOptions =

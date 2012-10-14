@@ -33,4 +33,10 @@ class User::VenuesController < UserController
     end
   end
 
+  def destroy
+    @venue = current_user.venues.find(params[:id])
+    @venue.delete
+    redirect_to action: :index
+  end
+
 end
