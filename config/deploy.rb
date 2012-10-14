@@ -15,7 +15,14 @@ role :app, "rubybnb.devmask.net"
 role :web, "rubybnb.devmask.net"
 role :db, "rubybnb.devmask.net", :primary => true
 
+before "deploy:finalize_update", "deploy:copy_database_config"
+
 namespace :deploy do
+
+  task :copy_database_config do
+    run "cp /opt/apps/database.yml #{current_release}/config/database.yml"
+  end
+
   task :start, :roles => :app, :except => { :no_release => true } do
     run "source /opt/apps/github && cd #{current_path} && bundle exec unicorn_rails -c config/unicorn.rb -E production -D"
   end
@@ -30,7 +37,6 @@ namespace :deploy do
     rescue
       puts "An error stoping the process"
     end
-    run "cp /opt/apps/database.yml /opt/apps/current/config/database.yml"
     migrate
     start
   end
