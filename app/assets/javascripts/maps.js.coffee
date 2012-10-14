@@ -10,6 +10,7 @@ class Codebnb.google_maps
       mapTypeId: google.maps.MapTypeId.ROADMAP
 
     map = new google.maps.Map(document.getElementById('venues_map'), @mapOptions)
+    venue_maps = new Codebnb.VenueMaps map
     # Try HTML5 geolocation
     if navigator.geolocation
       navigator.geolocation.getCurrentPosition ((position) ->
@@ -25,6 +26,7 @@ class Codebnb.google_maps
 
         $('#venue_latitude').val(position.coords.latitude)
         $('#venue_longitude').val(position.coords.longitude)
+
       ), ->
         @handleNoGeolocation true
     else

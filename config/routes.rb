@@ -19,6 +19,9 @@ Codebnb::Application.routes.draw do
   end
 
   resources :venues do
+    collection do
+      get :near
+    end
     resources :reservations, module: :venues
   end
 
