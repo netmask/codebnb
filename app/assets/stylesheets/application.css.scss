@@ -10,5 +10,14 @@
  *
  *= require_self
  *= require bootstrap
+ *= require gmaps4rails
  *= require_tree .
 */
+
+//Overrides
+#map img, #venues_map img {
+  max-width: none;
+}
+#map label, #venues_map label {
+  width: auto; display:inline;
+}

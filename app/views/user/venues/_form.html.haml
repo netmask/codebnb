@@ -1,0 +1,69 @@
+= form_for [:profile, @venue], class: 'form-horizontal' do |f|
+  %fieldset
+    #legend
+      %legend New Venue
+    .control-group
+      / Text input
+      = f.label :label, class: 'control-label'
+      .controls
+        = f.text_field :label, class: 'input-large'
+    .control-group
+      .controls
+        = link_to 'I want a different place!', '#', id: 'different-place'
+        .address.hidden
+          .alert.alert-error.hidden
+            %h4 Aww men!
+            Please try again, we couldn't find your location
+          = text_field_tag 'address', nil, class: 'input-large', placeholder: 'address'
+          = text_field_tag 'city', nil, class: 'input-medium', placeholder: 'city'
+          = text_field_tag 'state', nil, class: 'input-small', placeholder: 'state'
+          = text_field_tag 'zip-code', nil, class: 'input-small', placeholder: 'zip code'
+          = link_to 'Find location', '#', id: 'find_location', class: 'btn'
+      #venues_map
+        ss
+    .control-group
+      / Text input
+      = label_tag '','latitude & longitude', class: 'control-label'
+      .controls
+        = f.text_field :latitude, class: 'input-small', disabled: 'disabled'
+        = f.text_field :longitude, class: 'input-small', disabled: 'disabled'
+    .control-group
+      / Text input
+      = f.label :description, class: 'control-label'
+      .controls
+        = text_area :description, nil,class: 'input-large', rows: '3'
+    .control-group
+      / Text input
+      = f.label :rooms, class: 'control-label'
+      .controls
+        = f.number_field :rooms, class: 'input-large'
+    .control-group
+      / Text input
+      = f.label :disclamer, class: 'control-label'
+      .controls
+        = f.text_field :disclamer, class: 'input-large'
+    .control-group
+      %label.checkbox.inline
+        = f.check_box :work_place
+        Work place
+      %label.checkbox.inline
+        = f.check_box :meals
+        Meals
+      %label.checkbox.inline
+        = f.check_box :internet
+        Internet
+      %label.checkbox.inline
+        = f.check_box :mates_allowed
+        Mates allowed
+    .control-group
+      / Text input
+      = f.label :mates_quantity, class: 'control-label'
+      .controls
+        = f.text_field :mates_quantity, class: 'input-large'
+    .control-group
+      / Form Actions
+      .form-actions
+        %button.btn.btn-primary.pull-right{:type => "submit"} Save changes
+
+
+

@@ -6,7 +6,7 @@
       %meta{:content => "initial-scale=1.0, user-scalable=no", :name => "viewport"}
       %meta{:content => content_for?(:description) ? yield(:description) : "Codebnb", :name => "description"}
         = stylesheet_link_tag "application", :media => "all"
-        %script{:src => "http://maps.googleapis.com/maps/api/js?key=AIzaSyA-nKa9DJ8FPOI6fTLvTyoKS7wDW3VdxlU&sensor=true", :type => "text/javascript"}
+        %script{:src => "http://maps.googleapis.com/maps/api/js?key=AIzaSyCsUI6T9rdz59eW1ckzT-XgHHB9qcG2SfI&sensor=true", :type => "text/javascript"}
         = javascript_include_tag "application"
         = csrf_meta_tags
         = yield(:head)
@@ -18,5 +18,5 @@
       #main{:role => "main"}
         = yield
       %footer
-    / ! end of #container
+    = yield :scripts
 

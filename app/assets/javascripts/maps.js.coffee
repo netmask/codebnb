@@ -1,39 +1,68 @@
-initialize = ->
-  mapOptions =
-    zoom: 6
-    mapTypeId: google.maps.MapTypeId.ROADMAP
+@Codebnb ||= {}
 
-  map = new google.maps.Map(document.getElementById("venues_map"), mapOptions)
+class Codebnb.google_maps
 
-  # Try HTML5 geolocation
-  if navigator.geolocation
-    navigator.geolocation.getCurrentPosition ((position) ->
-      pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude)
-      infowindow = new google.maps.InfoWindow(
-        map: map
-        position: pos
-        content: "Location found using HTML5."
-      )
-      map.setCenter pos
-    ), ->
-      handleNoGeolocation true
+  constructor: ->
+    @mapOptions =
+      zoom: 15
+      mapTypeId: google.maps.MapTypeId.ROADMAP
 
-  else
+    map = new google.maps.Map(document.getElementById('venues_map'), @mapOptions)
+    # Try HTML5 geolocation
+    if navigator.geolocation
+      navigator.geolocation.getCurrentPosition ((position) ->
+        pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude)
+        @infowindow = new google.maps.Marker(
+          animation: 'bounce'
+          map: map
+          position: pos
+          title: "You are here!"
+          clickable: true
+        )
+        map.setCenter pos
 
-    # Browser doesn't support Geolocation
-    handleNoGeolocation false
-handleNoGeolocation = (errorFlag) ->
-  if errorFlag
-    content = "Error: The Geolocation service failed."
-  else
-    content = "Error: Your browser doesn't support geolocation."
-  options =
-    map: map
-    position: new google.maps.LatLng(60, 105)
-    content: content
+        $('#venue_latitude').val(position.coords.latitude)
+        $('#venue_longitude').val(position.coords.longitude)
+      ), ->
+        @handleNoGeolocation true
+    else
+      # Browser doesn't support Geolocation
+      @handleNoGeolocation false
 
-  infowindow = new google.maps.InfoWindow(options)
-  map.setCenter options.position
 
-map = undefined
-google.maps.event.addDomListener window, "load", initialize
+    $('#find_location').live 'click', (e) ->
+      e.preventDefault()
+      geo = new google.maps.Geocoder()
+      geo.geocode
+        address: "#{$('#address').val()}, #{$('#city').val()}, #{$('#state').val()}, #{$('zip-code').val()}, USA"
+      , (locResult) ->
+        if locResult.lenght > 0
+          pos = new google.maps.LatLng(locResult[0].geometry.location.lat(), locResult[0].geometry.location.lng())
+          @infowindow.setOptions(
+            map: map
+            position: pos
+            title: "You are here!"
+          )
+          map.setCenter pos
+          $('#venue_latitude').val locResult[0].geometry.location.lat()
+          $('#venue_longitude').val locResult[0].geometry.location.lng()
+        else
+          $('.alert').toggle()
+
+
+
+  @handleNoGeolocation: (errorFlag) ->
+    if errorFlag
+      content = "Error: The Geolocation service failed."
+    else
+      content = "Error: Your browser doesn't support geolocation."
+    @options =
+      map: map
+      position: new google.maps.LatLng(60, 105)
+      content: content
+
+    infowindow = new google.maps.InfoWindow(options)
+    map.setCenter @options.position
+
+# map = undefined
+# google.maps.event.addDomListener window, "load", initialize
