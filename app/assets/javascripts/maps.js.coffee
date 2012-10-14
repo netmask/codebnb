@@ -36,9 +36,9 @@ class Codebnb.google_maps
       e.preventDefault()
       geo = new google.maps.Geocoder()
       geo.geocode
-        address: "#{$('#address').val()}, #{$('#city').val()}, #{$('#state').val()}, #{$('zip-code').val()}, USA"
+        address: "#{$('#address').val()}, #{$('#city').val()}, #{$('#state').val()}, #{$('#zip-code').val()}, USA"
       , (locResult) ->
-        if locResult.lenght > 0
+        if locResult.length > 0
           pos = new google.maps.LatLng(locResult[0].geometry.location.lat(), locResult[0].geometry.location.lng())
           @infowindow.setOptions(
             map: map
