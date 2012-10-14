@@ -9,16 +9,27 @@ class Codebnb.VenueMaps
     @clear_markers()
     $.get '/venues/near', {lat: lat, long: long, rad: rad}, (data) =>
         $.each JSON.parse(data), (index, venue) =>
-          @add_mark venue.label, venue.latitude, venue.longitude
+          @add_mark venue
 
-  add_mark: (title, lat, long) ->
-    @markers.push new google.maps.Marker(
+  add_mark: (venue) ->
+   marker = new google.maps.Marker(
         animation: 'bounce'
         map: @map
-        position: new google.maps.LatLng(lat, long)
-        title: title
+        position: new google.maps.LatLng(venue.latitude, venue.longitude)
+        title: venue.title
         clickable: true
     )
+    new google.maps.event.addListener marker, "click", =>
+      @show_popup(venue)
+    @markers.push marker
+
+  show_popup: (venue) ->
+    $(".modal-body p").html "#{venue.label} </br> #{venue.description} </br> #{venue.latitude} </br> #{venue.longitude} "
+    $('#venue-info').modal
+      backdrop: 'true'
+      show: 'true'
+
+
 
   clear_markers: ->
     $.each @markers, ->

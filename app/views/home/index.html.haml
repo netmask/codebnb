@@ -17,6 +17,16 @@
   .span8
     #venues_map
 
+#venue-info.modal.hide.fade
+  .modal-header
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} ×
+    %h3 Venue info
+  .modal-body
+    %p
+  .modal-footer
+    %a.btn{:href => "#"} Close
+    %a.btn.btn-primary{:href => "#"} Book!
+
 :javascript
   $(function() {
     window.google_maps = new Codebnb.google_maps;
