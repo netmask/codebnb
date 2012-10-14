@@ -1,4 +1,12 @@
 #request.row
-  .offeset2.span8
-    %h3.lead.section-titles My Venues
+  .offset2.span8
+    %h3.lead.section-titles My Requests
 
+    %table.table.table-striped
+      %thead
+        %tr
+          %th Venue
+          %th Tenant
+          %th
+      %tbody
+        = render partial: 'user/requests/reservation', collection: @reservations

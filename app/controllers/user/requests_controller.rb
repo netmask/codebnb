@@ -14,7 +14,7 @@ class User::RequestsController < UserController
   protected
 
   def reservations
-    Reservation.requests params[:venue_id], current_user.id
+    Reservation.requests current_user.id
   end
 
   def reservation

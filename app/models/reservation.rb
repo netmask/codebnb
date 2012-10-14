@@ -8,7 +8,7 @@ class Reservation < ActiveRecord::Base
   def self.requests(user_id)
     joins(:period => :venue)
       .where(:venues => {user_id: user_id})
-      .where(:status => :applyed)
+      .where(:status => :pending)
   end
 
   def self.request(venue_id, hoster_id, user_id)
