@@ -4,8 +4,8 @@ class User::VenuesController < UserController
     @venues = current_user.venues
   end
 
-  def show
-    @venue = current.user.venues.find(params[:id])
+  def edit
+    @venue = current_user.venues.find(params[:id])
   end
 
   def new
@@ -18,8 +18,25 @@ class User::VenuesController < UserController
       redirect_to action: :index
     else
       flash[:error] = "Errors #{@venue.errors}"
-      render :new
+      render :index
     end
+  end
+
+  def update
+    @venue = current_user.venues.find(params[:id])
+    if @venue.update_attributes(params[:venue])
+      flash[:notice] = 'Venue Updated'
+      redirect_to action: :index
+    else
+      flash[:error] = "Errros #{@veneu.errrors}"
+      render :index
+    end
+  end
+
+  def destroy
+    @venue = current_user.venues.find(params[:id])
+    @venue.delete
+    redirect_to action: :index
   end
 
 end
